@@ -109,6 +109,8 @@ if __name__ == "__main__":
 
     if attack_type == 'UDP':
         udp_attack(target_ip, target_port, duration)
+        print(f"{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}SFT {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX} UDP attack has been launched on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}on {Fore.LIGHTGREEN_EX}{duration} {Fore.LIGHTBLUE_EX}seconds.")
+    
     elif attack_type == 'TCP':
         tcp_syn_attack(target_ip, target_port, duration)
     elif attack_type == 'HTTP':
