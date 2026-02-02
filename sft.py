@@ -52,9 +52,9 @@ def check_target_availability(target_ip, target_port):
     socket.create_connection((target_ip, target_port), timeout=5)
     print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} Target available: {Fore.LIGHTGREEN_EX}{target_ip}:{target_port}")
     return True
-    except socket.error:
-        print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} Target unavailable: {Fore.LIGHTRED_EX}{target_ip}:{target_port}")
-        return False
+except socket.error:
+    print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} Target unavailable: {Fore.LIGHTRED_EX}{target_ip}:{target_port}")
+    return False
 
 def udp_attack(target_ip, target_port, duration): 
     # Melakukan serangan UDP pada target yang ditentukan.
