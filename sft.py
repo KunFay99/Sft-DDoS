@@ -27,7 +27,7 @@ def display_banner(): #logo program.
 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
                           {Fore.LIGHTRED_EX}UDP DoS | TCP SYN | HTTP Flood
 """
-print(banner_text)
+    print(banner_text)
 def parse_arguments(): 
     # Mengurai dan memvalidasi argumen baris perintah.
     if len(sys.argv) != 5:
