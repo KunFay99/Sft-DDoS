@@ -33,7 +33,7 @@ def parse_arguments():
     if len(sys.argv) != 5:
         print(f"""
         {Fore.LIGHTYELLOW_EX}Use » python {os.path.basename(__file__)} [target] [port] [duration] [attack_type]
-        {Fore.LIGHTGREEN_EX} Type Attacks »
+        {Fore.LIGHTGREEN_EX} Type Attacks 
         {Fore.LIGHTGREEN_EX} UDP           
         {Fore.LIGHTRED_EX} TCP  
         {Fore.LIGHTGREEN_EX} HTTP              
